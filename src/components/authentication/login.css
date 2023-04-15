@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar&family=Roboto:wght@300&display=swap');
+
+.login-header{
+    font-family: 'Akshar';
+}
+label {
+    color:#8CA6FE;
+}
+.form-select {
+    color:#8CA6FE;
+}
+option{
+    color: black;
+}
