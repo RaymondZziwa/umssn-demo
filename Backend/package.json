@@ -1,0 +1,11 @@
+{
+  "name": "umssn-academic-progress-tracker",
+  "version": "1.0.0",
+  "description": "Web application to keep track of students academic progress throughout their stay at Uganda Martyrs S.S Namugongo.This application will use the student's monthly academic data to easily identify the learner's most performed subject per set in a term and also bring these academic records closer to parents despite their location.This will also enable the school to go paperless in the long term.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zziwa Raymond Ian",
+  "license": "MIT"
+}
