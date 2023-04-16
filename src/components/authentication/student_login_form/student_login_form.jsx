@@ -1,4 +1,13 @@
+import { useState } from "react"
+
 const StudentLogin = () => {
+    const [firstName, setFirstName] = useState('')
+    const [middleName, setMiddleName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [studentClass, setStudentClass] = useState('')
+    const [studentStream, setStudentStream] = useState('')
+    const [password, setPassword] = useState('')
+
     return(
         <>
             <div className="mb-3">

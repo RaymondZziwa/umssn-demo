@@ -1,4 +1,8 @@
+import { useState } from "react"
+
 const AdminLogin = () => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState()
     return(
         <>
             <div className="mb-3">
