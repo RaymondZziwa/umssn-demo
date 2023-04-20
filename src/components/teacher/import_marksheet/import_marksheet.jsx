@@ -38,13 +38,13 @@ const ImportMarkSheetForm = () => {
             </Col>
         </Row>
             <div className="col-md-4 offset-md-4">
-            <h4 style={{textAlign:'center'}}>View Academic Performance</h4>
+            <h4 style={{textAlign:'center'}}>Submit Final Examination Marksheet</h4>
             <Form style={{textAlign:'center'}}>
                 <input className="form-control" placeholder="Examination Set Name" onChange={getExamSet}/>
                 <input className="form-control" placeholder="Class" value={localStorage.getItem('Class') || ''} readOnly/>
                 <input className="form-control" placeholder="Stream" value={localStorage.getItem('Stream') || ''} readOnly/>
                 <input className="form-control" type="file" placeholder="submit mark sheet" onChange={getFile} accept=".xlsx, .xls, .csv"/>
-                <button className="btn btn-primary" onClick={submitHandler}>Submit</button>
+                <button className="btn btn-primary" onClick={submitHandler} style={{width:'100%'}}>Submit</button>
             </Form>
             </div>
        </Row>

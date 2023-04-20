@@ -16,6 +16,7 @@ const StudentMarkSheet = () => {
             </Col>
             <Row>
                 <div className="col-md-6 offset-md-3">
+                    <h4 style={{textAlign:'center'}}>View Academic Performance</h4>
                     <input className="form-control" placeholder="First Name" readOnly/>
                     <input className="form-control" placeholder="Last Name" readOnly/>
                     <input className="form-control" placeholder="Class" value={localStorage.getItem('Class') || ''} readOnly/>
