@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import AdminLogin from "./admin_login_form/admin_login_form"
 import TeacherLogin from "./teacher_login_form/teacher_login_form"
 import StudentLogin from "./student_login_form/student_login_form"
-import logo from './../../../public/imgs/badge.png'
+import logo from '../../imgs/badge.png'
 
 const Login = () => {
     const [role, setRole] = useState('')
@@ -20,7 +20,7 @@ const Login = () => {
                     <p style={{ color: "#3452A3", textAlign: "center", fontFamily: "akshar", fontStyle: "normal", fontSize: "22px" }} className="login-header">UMSSN</p>
                 </div>
                 <div className="mb-3">
-                    <select class="form-select" aria-label="Default select example" onChange={handleRoleData}>
+                    <select className="form-select" aria-label="Default select example" onChange={handleRoleData}>
                         <option selected>Role</option>
                         <option value="admin">Administrator</option>
                         <option value="teacher">Teacher</option>
