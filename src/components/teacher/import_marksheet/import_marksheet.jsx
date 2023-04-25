@@ -1,11 +1,16 @@
 import {Form, Row, Col} from "react-bootstrap"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import TeacherNavbar from "../../navbars/teacher_navbar"
 import './form.css'
+import axios from "axios"
+import formData from "form-data"
+
 const ImportMarkSheetForm = () => {
     const [examSet, setExamSet] = useState()
-    const [file, setFile] = useState()
-
+    const [file, setFile] = useState(null)
+    const [studentClass, setClass] = useState('')
+    const [studentStream, setStream] = useState('')
+    const fileRef = useRef()
     const [activeTab, setActiveTab] = useState('save examination data');
 
     const handleTabChange = (tab) => {
@@ -16,19 +21,19 @@ const ImportMarkSheetForm = () => {
         event.preventDefault()
         setExamSet(event.target.value)
     }
-    const getFile = event => {
-        event.preventDefault()
-        setFile(event.target.value)
-    }
 
     const submitHandler = event => {
         event.preventDefault()
-        axios.post(),{
-            examinationSetName: examSet,
-            class: localStorage.getItem('Class'),
-            stream: localStorage.getItem('Stream'),
-            dataFile: file
-        }
+        console.log('file', file)
+        let formdata = new formData()
+        formdata.append("file",file)
+
+        axios.post('http://localhost:5000/savestudentresults', 
+        formdata,{
+        studentClass : localStorage.getItem('Class'),
+        studentStream : localStorage.getItem('Stream')
+    }
+        ).then((res)=> console.log(res.data))
     }
     return(
        <Row>
@@ -39,11 +44,11 @@ const ImportMarkSheetForm = () => {
         </Row>
             <div className="col-md-4 offset-md-4">
             <h4 style={{textAlign:'center'}}>Submit Final Examination Marksheet</h4>
-            <Form style={{textAlign:'center'}}>
+            <Form style={{textAlign:'center'}} encType="multipart/form-data">
                 <input className="form-control" placeholder="Examination Set Name" onChange={getExamSet}/>
                 <input className="form-control" placeholder="Class" value={localStorage.getItem('Class') || ''} readOnly/>
                 <input className="form-control" placeholder="Stream" value={localStorage.getItem('Stream') || ''} readOnly/>
-                <input className="form-control" type="file" placeholder="submit mark sheet" onChange={getFile} accept=".xlsx, .xls, .csv"/>
+                <input className="form-control" type="file" multiple placeholder="submit mark sheet" onChange={(e)=> setFile(e.target.files[0])} ref={fileRef} accept=".xlsx, .xls, .csv"/>
                 <button className="btn btn-primary" onClick={submitHandler} style={{width:'100%'}}>Submit</button>
             </Form>
             </div>
