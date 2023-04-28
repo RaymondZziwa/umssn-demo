@@ -66,7 +66,7 @@ const StudentMarkSheet = () => {
                         <tbody class="table-group-divider">
                         {isResultsLoading ? <tr><td>There is no Data From Database.</td></tr> :
                                 Object.keys(studentResults).map(key => (
-                                    <tr>
+                                    <tr> 
                                         <td>{key}</td>
                                         <td>{getValueByKey(studentResults, key)}</td>
                                     </tr>
