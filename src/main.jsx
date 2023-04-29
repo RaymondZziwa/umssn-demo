@@ -9,10 +9,15 @@ import TeacherDashboard from './components/teacher/teacher_dashboard';
 import ImportMarkSheetForm from './components/teacher/import_marksheet/import_marksheet';
 import StudentDashboard from './components/student/student_dashboard';
 import StudentMarkSheet from './components/student/student_marksheet/student_marksheet';
+import NewParentRegistration from './components/authentication/parent_registration/parentRegistration';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <NewParentRegistration />,
   },
   {
     path: "/teacherdashboard",
