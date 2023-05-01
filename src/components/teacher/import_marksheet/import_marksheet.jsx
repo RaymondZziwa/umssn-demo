@@ -26,13 +26,11 @@ const ImportMarkSheetForm = () => {
         event.preventDefault()
         console.log('file', file)
         let formdata = new formData()
+        formdata.append("examsetid", examSet)
         formdata.append("file",file)
 
         axios.post('http://localhost:5000/savestudentresults', 
-        formdata,{
-        studentClass : localStorage.getItem('Class'),
-        studentStream : localStorage.getItem('Stream')
-    }
+        formdata
         ).then((res)=> console.log(res.data))
     }
     return(

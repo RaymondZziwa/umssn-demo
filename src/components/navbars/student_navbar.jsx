@@ -1,8 +1,10 @@
+import logo from '../../imgs/badge.png'
+import Logout from '../authentication/logout'
 const StudentNavbar = ({activeTab, onTabChange}) => {
     return(
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-            <a className="navbar-brand" href="#">UMSSN</a>
+            <a className="navbar-brand" href="#"><img src={logo} alt='school logo' style={{height:'50px'}}/></a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
             </button>
@@ -11,17 +13,20 @@ const StudentNavbar = ({activeTab, onTabChange}) => {
                 <li className="nav-item">
                 <a  onClick={()=>onTabChange('dashboard')} className={activeTab === 'dashboard' ? 'nav-link active' : 'nav-link'} aria-current="page" href="/studentdashboard">Dashboard</a>
                 </li>
-                <li className="nav-item">
-                <a className="nav-link" href="">Student Profile</a>
-                </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                 <a className="nav-link" href="#">Student Attendance Information</a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                 <a className="nav-link" href="#">Student Past Academic Records</a>
                 </li>
                 <li className="nav-item">
                 <a onClick={()=>onTabChange('save examination data')} className={activeTab === 'save examination data' ? 'nav-link active' : 'nav-link'}  href="/studentmarksheet">Student Recent Performance</a>
+                </li>
+                <li className="nav-item">
+                <a className="nav-link" href="#">School Events</a>
+                </li>
+                <li className="nav-item">
+                    <Logout />
                 </li>
             </ul>
             </div>

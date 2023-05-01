@@ -169,7 +169,7 @@ const NewParentRegistration = () => {
                                 {isClassStreamsLoading ? 
                                     <option defaultValue>Select Class Stream</option> : 
                                     classStreams.map((stream => (
-                                        <option key={stream.streamid}>{stream.streamname}</option>
+                                        <option key={stream.streamid} value={stream.streamid}>{stream.streamname}</option>
                                     )))
                                 }
                         </select>
