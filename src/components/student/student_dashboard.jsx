@@ -5,7 +5,7 @@ import './studentdashboard.css'
 import maleAvatar from '../../imgs/male-avatar.png'
 import femaleAvatar from '../../imgs/female-avatar.png'
 import axios from "axios";
-
+import AverageLineGraph from "./academic_graphs/averagelinegraph";
 const StudentDashboard = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
 
@@ -29,7 +29,7 @@ const StudentDashboard = () => {
             token: localStorage.getItem('token'),
             studentIdNumber: localStorage.getItem('studentIdNumber')
         })
-        if(res.data.responseStatus !== 403){
+        if(res.data.responseStatus !== 403 || res.data.responseStatus !== 404){
             setStudentAcademicData(res.data)
             console.log('res', res.data)
             setIsStudentAcademicDataLoading(false)
@@ -40,15 +40,6 @@ const StudentDashboard = () => {
         }else{
             setIsStudentAcademicDataLoading(true)
         }
-        
-        // for(let i = 0; i < studentAcademicData.length;i++){
-        //     setLineGraphData([...lineGraphData,{
-        //         examSetId: studentAcademicData[i].examsetid,
-        //         studentAverage: studentAcademicData[i].average
-        //     }])
-        // }
-        //console.log(lineGraphData)
-        //stopped here trying to push data into an array so that its used for the graph
     }
     useEffect(()=>{
         fetchStudentAcademicData()
@@ -93,15 +84,17 @@ const StudentDashboard = () => {
                         <p className="alert alert-danger">Your session token is expired. Please log in again.</p>
                     }<br></br>
                 </Col>
-                <Col sm='12' md='8' lg='8' xl='8' style={{backgroundColor:'yellow'}}>
+                <Col sm='12' md='8' lg='8' xl='8'>
                     <h3>Student General Academic Overview</h3>
-                    -line graph<br></br>
-                    {
-                                    
+                    <AverageLineGraph academicData={studentAcademicData}/>
+                    {localStorage.getItem('userLoginStatus') &&
+                        <div style={{paddingLeft:'10px'}}>
+                          Current Total : <span style={{textAlign:'center'}}>{recentAcademicData.total}</span><br></br>
+                          Current Average : <span style={{textAlign:'center'}}>{recentAcademicData.average}</span><br></br>
+                          Current Position In Class : <span style={{textAlign:'center'}}>{recentAcademicData.pos_c}</span><br></br>
+                          Current Position In Stream : <span style={{textAlign:'center'}}>{recentAcademicData.pos_s}</span>
+                        </div>      
                     }
-                    
-                    -Best performed subject according to last set of exams <br></br>
-                    -Worst performed subject according to last set of exams <br></br>
                 </Col>
             </Row>
         </Row>

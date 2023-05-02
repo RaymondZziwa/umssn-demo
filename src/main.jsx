@@ -13,6 +13,8 @@ import NewParentRegistration from './components/authentication/parent_registrati
 import StudentAcademicRecords from './components/student/student_marksheet/studentacademicrecords';
 import ClassEvents from './components/student/class_events/school_class_events';
 import SaveSchoolEvents from './components/admin/school_events/saveschoolevents';
+import StudentRegistration from './components/admin/user_registration/student_registration';
+import TeacherRegistration from './components/admin/user_registration/teacher_registration';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
   {
     path: "/saveschoolevents",
     element: <SaveSchoolEvents />
+  },
+  {
+    path: "/studentregistration",
+    element: <StudentRegistration />
+  },
+  {
+    path: "/teacherregistration",
+    element: <TeacherRegistration />
   }
 ]);
 

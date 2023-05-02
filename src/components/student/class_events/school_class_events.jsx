@@ -49,7 +49,7 @@ const ClassEvents = () => {
                         <tbody className="table-group-divider">
                             {(!isEventsLoading || typeof schoolEvents === "object") ?
                                 schoolEvents.map((event => (
-                                    <tr>
+                                    <tr key={event.eventname}>
                                         <td>{event.class}</td>
                                         <td>{event.eventname}</td>
                                         <td>{event.eventdate}</td>

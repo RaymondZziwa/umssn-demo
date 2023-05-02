@@ -28,6 +28,9 @@ const StudentNavbar = ({activeTab, onTabChange}) => {
                 <a onClick={()=>onTabChange('school class events')} className={activeTab === 'school class events' ? 'nav-link active' : 'nav-link'} href="/schoolclassevents">School Events</a>
                 </li>
                 <li className="nav-item">
+                <a onClick={()=>onTabChange('staff contact list')} className={activeTab === 'staff contact list' ? 'nav-link active' : 'nav-link'} href="/staffcontactlist">Staff Contact List</a>
+                </li>
+                <li className="nav-item">
                     {localStorage.getItem('userLoginStatus') ? <Logout /> : <LoginBtn /> }
                 </li>
             </ul>

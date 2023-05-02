@@ -56,7 +56,7 @@ const StudentMarkSheet = () => {
                             </tr>
                         </thead>
                         <tbody className="table-group-divider">
-                        {isResultsLoading ? <tr><td>There is no Data From Database.</td></tr> :
+                        {(isResultsLoading  && localStorage.getItem('userLoginStatus') !== true) ? <tr><td>There is no Data From Database.</td></tr> :
                                 Object.keys(studentResults).map(key => (
                                     <tr key={key}> 
                                         <td>{key}</td>
