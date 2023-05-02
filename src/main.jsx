@@ -10,6 +10,9 @@ import ImportMarkSheetForm from './components/teacher/import_marksheet/import_ma
 import StudentDashboard from './components/student/student_dashboard';
 import StudentMarkSheet from './components/student/student_marksheet/student_marksheet';
 import NewParentRegistration from './components/authentication/parent_registration/parentRegistration';
+import StudentAcademicRecords from './components/student/student_marksheet/studentacademicrecords';
+import ClassEvents from './components/student/class_events/school_class_events';
+import SaveSchoolEvents from './components/admin/school_events/saveschoolevents';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +37,18 @@ const router = createBrowserRouter([
   {
     path: "/studentmarksheet",
     element: <StudentMarkSheet />
+  },
+  {
+    path: "/studentacademicrecords",
+    element: <StudentAcademicRecords />
+  },
+  {
+    path: "/schoolclassevents",
+    element: <ClassEvents />
+  },
+  {
+    path: "/saveschoolevents",
+    element: <SaveSchoolEvents />
   }
 ]);
 

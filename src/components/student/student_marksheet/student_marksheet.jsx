@@ -1,48 +1,44 @@
 import {Row, Col} from "react-bootstrap"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StudentNavbar from "../../navbars/student_navbar";
 import axios from "axios";
 
 const StudentMarkSheet = () => {
     const [activeTab, setActiveTab] = useState('save examination data');
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
     let resultsMap;
     const [studentResults, setStudentResults] = useState()
     const [isResultsLoading, setIsResultsLoading] = useState(true)
-    const fnameHandler = event => {
-        event.preventDefault()
-        setFirstName(event.target.value)
-    }
-    const lnameHandler = (event) => {
-        event.preventDefault()
-        setLastName(event.target.value)
-    }
+    const [examSetName, setExamSetName] = useState('')
     const handleTabChange = (tab) => {
         setActiveTab(tab);
     };
 
-    const fetchResultsHandler = async (event) => {
-        event.preventDefault()
+    const fetchResultsHandler = async () => {
         let res = await axios.post('http://localhost:5000/fetchstudentresults',{
-            fname: firstName,
-            lname: lastName
+            token: localStorage.getItem('token'),
+            studentIdNumber: localStorage.getItem('studentIdNumber')
         })
+        console.log(res.data)
         if (typeof res.data === 'string') {
             setIsResultsLoading(true)
             console.log(res.data)
         } else {
-            console.log(res.data[0])
+            console.log(res.data)
+            setExamSetName(res.data.examSetName)
             setIsResultsLoading(false)
-            setStudentResults(res.data[0])
+            setStudentResults(res.data.sqlResult[0])
         }
          resultsMap = new Map(Object.entries(studentResults));
-        console.log('logging map', resultsMap)
+         console.log('logging map', resultsMap)
     }
+
+    useEffect(()=>{
+        fetchResultsHandler()
+    },[])
 
     function getValueByKey(object, row) {
         return object[row];
-      }
+    }
     return(
         <Row>
              <Col sm='12' md='12' lg='12' xl='12'>
@@ -50,12 +46,8 @@ const StudentMarkSheet = () => {
             </Col>
             <Row>
                 <div className="col-md-6 offset-md-3">
-                    <h4 style={{textAlign:'center'}}>View Academic Performance</h4>
-                    <input className="form-control" placeholder="First Name" onChange={fnameHandler}/>
-                    <input className="form-control" placeholder="Last Name"  onChange={lnameHandler}/>
-                    <input className="form-control" placeholder="Class" value={localStorage.getItem('Class') || ''} readOnly/>
-                    <input className="form-control" placeholder="Stream" value={localStorage.getItem('Stream') || ''} readOnly/>
-                    <button className="btn btn-primary" style={{width:'100%'}} onClick={fetchResultsHandler}>Get Results</button>
+                    <h4 style={{textAlign:'center'}}>View Most Recent Academic Performance</h4>
+                    <p style={{textAlign:'center',fontSize:'20px'}}>Examination Set Name: {examSetName}</p>
                     <table className="table">
                         <thead>
                             <tr>
@@ -63,10 +55,10 @@ const StudentMarkSheet = () => {
                                 <th scope="col">Results</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider">
+                        <tbody className="table-group-divider">
                         {isResultsLoading ? <tr><td>There is no Data From Database.</td></tr> :
                                 Object.keys(studentResults).map(key => (
-                                    <tr> 
+                                    <tr key={key}> 
                                         <td>{key}</td>
                                         <td>{getValueByKey(studentResults, key)}</td>
                                     </tr>

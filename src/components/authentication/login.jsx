@@ -28,6 +28,7 @@ const Login = () => {
                 setIsLoginSuccessful(true)
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('studentIdNumber', res.data.studentIdNumber)
+                localStorage.setItem('userLoginStatus', true)
                 navigate(`${res.data.redirectPath}`)
             }else{
                 setIsLoginSuccessful(false)
