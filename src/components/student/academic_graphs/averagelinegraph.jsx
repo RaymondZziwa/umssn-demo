@@ -21,7 +21,7 @@ const AverageLineGraph = ({academicData}) => {
         labels: labels,
         datasets: [
           {
-            label: 'Average Scores',
+            label: 'Student Average Per Examination Set',
             data: graphData.map(item => item.average),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',

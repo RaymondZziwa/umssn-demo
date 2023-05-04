@@ -15,6 +15,12 @@ import ClassEvents from './components/student/class_events/school_class_events';
 import SaveSchoolEvents from './components/admin/school_events/saveschoolevents';
 import StudentRegistration from './components/admin/user_registration/student_registration';
 import TeacherRegistration from './components/admin/user_registration/teacher_registration';
+import StaffContacts from './components/student/staff_contacts/staff_contacts';
+import AdminDashboard from './components/admin/admin_dashboard';
+import TeacherActivation from './components/authentication/teacher_registration/teacherRegistration';
+import StudentProfiles from './components/teacher/student_profiles/student_profiles';
+import StudentAcademicAnalysis from './components/teacher/student_academic_analysis/student_academic_analysis';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +65,26 @@ const router = createBrowserRouter([
   {
     path: "/teacherregistration",
     element: <TeacherRegistration />
+  },
+  {
+    path: "/admindashboard",
+    element: <AdminDashboard />
+  },
+  {
+    path: "/staffcontactlist",
+    element: <StaffContacts />
+  },
+  {
+    path: "/teacheractivation",
+    element: <TeacherActivation />
+  },
+  {
+    path: "/studentprofiles",
+    element: <StudentProfiles />
+  },
+  {
+    path: "/studentacademicanalysis",
+    element: <StudentAcademicAnalysis />
   }
 ]);
 

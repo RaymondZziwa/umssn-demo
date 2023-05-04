@@ -28,7 +28,7 @@ const StudentLogin = ({loginHandler}) => {
                 </div>
             </div>
             <div className="mb-3">
-                    <button style={{ width: "100%", border: "none", color: "white", height: "45px", backgroundColor: "#3452A3" }} onClick={event => loginHandler(event,studentIdNumber, password)}>LOGIN</button>
+                    <button style={{ width: "100%", border: "none", color: "white", height: "45px", backgroundColor: "#3452A3" }} onClick={event => loginHandler(event, studentIdNumber, password)}>LOGIN</button>
             </div>
         </>
     )

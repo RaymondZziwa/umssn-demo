@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import {Row, Col} from "react-bootstrap"
 import StudentNavbar from "../../navbars/student_navbar";
+import TeacherNavbar from "../../navbars/teacher_navbar";
+
 import axios from "axios";
 
 const ClassEvents = () => {
@@ -32,7 +34,9 @@ const ClassEvents = () => {
     return(
         <Row>
              <Col sm='12' md='12' lg='12' xl='12'>
-                <StudentNavbar activeTab={activeTab} onTabChange={handleTabChange}/>
+                {localStorage.getItem('role') === 'tutor' ? <TeacherNavbar activeTab={activeTab} onTabChange={handleTabChange}/> :
+                                    <StudentNavbar activeTab={activeTab} onTabChange={handleTabChange}/>
+                }
             </Col>
             <Row>
                 <div className="col-md-6 offset-md-3">
