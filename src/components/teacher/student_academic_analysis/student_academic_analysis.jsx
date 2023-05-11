@@ -105,7 +105,7 @@ const StudentAcademicAnalysis = () => {
                                     studentList.map((student => (
                                         <option key={student.studentid} value={student.studentid}>{student.firstname} {student.middlename} {student.lastname} - {student.studentclass} - {student.studentstream}</option>
                                     ))): 
-                                    <p className="alert alert-danger" style={{textAlign:'center',marginTop:'5px'}}>No student has been chosen.</p>            
+                                    <p className="alert alert-danger" style={{textAlign:'center',marginTop:'5px'}}>No student has been selected.</p>            
                                 }
                         </select>
                     </div>

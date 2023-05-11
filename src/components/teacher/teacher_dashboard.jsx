@@ -2,11 +2,12 @@ import {Row, Col} from "react-bootstrap"
 import { useEffect, useState } from "react";
 import TeacherNavbar from "../navbars/teacher_navbar";
 import axios from "axios";
+import ClassAssesment from "./class_assessment/class_assessment";
+
 const TeacherDashboard = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
     const [results, setResults] = useState(undefined)
     const [areResultsLoading, setAreResultsLoading] = useState(true)
-
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);
@@ -40,46 +41,8 @@ const TeacherDashboard = () => {
                     Class :<br></br>
                     Stream:<br></br>
                     Total number of students in stream:<br></br>
-                    <h4 style={{textAlign:'center'}}>Best Performing Students</h4>
-                    <table className="table" style={{textAlign:'center'}}>
-                        <thead>
-                            <tr>
-                                <th scope="col">Student Name</th>
-                                <th scope="col">Average</th>
-                            </tr>
-                        </thead>
-                        <tbody className="table-group-divider">
-                            {/* {bestPerformers.length ?
-                                bestPerformers.map((student => (
-                                   <tr key={student.studentname}>
-                                        <td>{student.studentname}</td>
-                                        <td>{student.average}</td>
-                                   </tr>
-                                ))):
-                                <tr><td><p>All students scored below 95% average.</p></td></tr>
-                            } */}
-                        </tbody>
-                    </table>
-                    <h4 style={{textAlign:'center'}}>Poor Performing Students</h4>
-                    <table className="table" style={{textAlign:'center'}}>
-                        <thead>
-                            <tr>
-                                <th scope="col">Student Name</th>
-                                <th scope="col">Average</th>
-                            </tr>
-                        </thead>
-                        <tbody className="table-group-divider">
-                            {/* {poorPerformers.length ?
-                                poorPerformers.map((student => (
-                                   <tr key={student.studentname}>
-                                        <td>{student.studentname}</td>
-                                        <td>{student.average}</td>
-                                   </tr>
-                                ))):
-                                <tr><td><p>All Students scored above 80% average.</p></td></tr>
-                            } */}
-                        </tbody>
-                    </table>
+                    
+                    {/* <ClassAssesment assessmentData={results} /> */}
                 </div>
 
             </Col>
