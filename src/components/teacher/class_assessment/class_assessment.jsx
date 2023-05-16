@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const ClassAssesment = ({assessmentData}) => {
     console.log("assess", assessmentData)
     let bestPerformedSubjects =  Object.entries(assessmentData).filter(([key, value]) => {
@@ -11,8 +13,11 @@ const ClassAssesment = ({assessmentData}) => {
         return key !== "total" && key !== "average" && key !== "pos_s" && key !== "pos_c" && key !== "ple" && Number(value) < 70;
       }).map(([key, value]) => ({ subject: key, grade: Number(value) }));
 
-    console.log('bps', bestPerformedSubjects)
-    console.log('wps', worstPerformedSubjects)
+
+    useEffect(()=>{
+        console.log('bps', bestPerformedSubjects)
+        console.log('wps', worstPerformedSubjects)
+    },[assessmentData])
     return(
         <div style={{display:'grid', placeItems:'center'}}>
                     <h4 style={{textAlign:'center'}}>Best Performing Students</h4>
