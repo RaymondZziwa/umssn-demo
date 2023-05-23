@@ -73,7 +73,7 @@ const TeacherRegistration = () => {
     }
 
     const fetchSubjects = async() => {
-        let res = await axios.post('http://localhost:5000/fetchsubjects', {
+        let res = await axios.post('http://82.180.136.230:5000/fetchsubjects', {
             token: localStorage.getItem('token')
         })
          if(res.data.responseStatus !== 404 || res.data.responseStatus !== 403 ){
@@ -83,7 +83,7 @@ const TeacherRegistration = () => {
     }
 
     const fetchStudentClassStreams = async () => {
-        let res = await axios.post('http://localhost:5000/fetchstreamstreams', {
+        let res = await axios.post('http://82.180.136.230:5000/fetchstreamstreams', {
             token: localStorage.getItem('token'),
             selectedStudentClass: studentClass
         })
@@ -112,7 +112,7 @@ const TeacherRegistration = () => {
         event.preventDefault()
         inputFieldValidator()
         if(!validationErrorStatus){
-                let res = await axios.post('http://localhost:5000/teacherregistration', {
+                let res = await axios.post('http://82.180.136.230:5000/teacherregistration', {
                     firstName: firstName,
                     middleName: middleName,
                     lastName: lastName,

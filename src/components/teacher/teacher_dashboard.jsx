@@ -17,7 +17,7 @@ const TeacherDashboard = () => {
     const [studentProfiles, setStudentProfiles] = useState(null)
 
     const fetchStudentProfiles = async() => {
-      let res = await axios.post('http://localhost:5000/fetchstudentprofiles', {
+      let res = await axios.post('http://82.180.136.230:5000/fetchstudentprofiles', {
           token: localStorage.getItem('token')
       })
 
@@ -42,7 +42,7 @@ const TeacherDashboard = () => {
     };
 
     const fetchStudentsResults = async () => {
-        let res = await axios.post('http://localhost:5000/fetchall',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchall',{
             token: localStorage.getItem('token')
         })
 

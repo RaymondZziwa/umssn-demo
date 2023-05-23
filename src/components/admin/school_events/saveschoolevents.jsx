@@ -52,7 +52,7 @@ const SaveSchoolEvents = () => {
         event.preventDefault()
         inputFieldValidator()
         if(!validationErrorStatus){
-            let res = await axios.post('http://localhost:5000/saveschoolevent',{
+            let res = await axios.post('http://82.180.136.230:5000/saveschoolevent',{
                 token: localStorage.getItem('token'),
                 eventName: eventName,
                 eventTerm: eventTerm,

@@ -2,6 +2,7 @@ import {Row, Col} from "react-bootstrap"
 import { useEffect, useState } from "react";
 import StudentNavbar from "../../navbars/student_navbar";
 import axios from "axios";
+import loading from "../../../imgs/Loading.gif"
 
 const StudentMarkSheet = () => {
     const [activeTab, setActiveTab] = useState('save examination data');
@@ -14,7 +15,7 @@ const StudentMarkSheet = () => {
     };
 
     const fetchResultsHandler = async () => {
-        let res = await axios.post('http://localhost:5000/fetchstudentresults',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchstudentresults',{
             token: localStorage.getItem('token'),
             studentIdNumber: localStorage.getItem('studentIdNumber')
         })
@@ -56,7 +57,7 @@ const StudentMarkSheet = () => {
                             </tr>
                         </thead>
                         <tbody className="table-group-divider">
-                        {(isResultsLoading  && localStorage.getItem('userLoginStatus') !== true) ? <tr><td>There is no Data From Database.</td></tr> :
+                        {(isResultsLoading  && localStorage.getItem('userLoginStatus') !== true) ? <tr><td><p style={{textAlign:'center'}}><img src={loading} alt='loading' style={{height:'80px'}}/><br></br>Loading student most recent performance...</p></td></tr> :
                                 Object.keys(studentResults).map(key => (
                                     <tr key={key}> 
                                         <td>{key}</td>

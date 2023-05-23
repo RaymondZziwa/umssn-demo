@@ -69,7 +69,7 @@ const TeacherActivation = () => {
         inputFieldValidator()
         if(!validationErrorStatus){
             if(arePasswordsMatching === null){
-                let res = await axios.post('http://localhost:5000/teacheractivation',{
+                let res = await axios.post('http://82.180.136.230:5000/teacheractivation',{
                     tutorIdNumber: tutorIdNumber,
                     tutorFirstName: tutorFirstName,
                     tutorMiddleName: tutorMiddleName,

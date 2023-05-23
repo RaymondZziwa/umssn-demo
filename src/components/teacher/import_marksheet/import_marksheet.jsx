@@ -29,7 +29,7 @@ const ImportMarkSheetForm = () => {
         formdata.append("examsetid", examSet)
         formdata.append("file",file)
 
-        axios.post('http://localhost:5000/savestudentresults', 
+        axios.post('http://82.180.136.230:5000/savestudentresults', 
         formdata
         ).then((res)=> console.log(res.data))
     }

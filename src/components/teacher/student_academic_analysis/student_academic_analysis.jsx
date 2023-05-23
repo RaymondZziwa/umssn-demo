@@ -33,7 +33,7 @@ const StudentAcademicAnalysis = () => {
     };
 
     const fetchStudentAcademicData =  async(studentIdNumber) => {
-        let res = await axios.post('http://localhost:5000/fetchstudentacademicdata',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchstudentacademicdata',{
             token: localStorage.getItem('token'),
             studentIdNumber: studentIdNumber
         })
@@ -50,7 +50,7 @@ const StudentAcademicAnalysis = () => {
         }
     }
     const fetchStudentProfileData = async (studentIdNumber) => {
-        let res = await axios.post('http://localhost:5000/fetchstudentprofile',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchstudentprofile',{
             token: localStorage.getItem('token'),
             studentIdNumber: studentIdNumber
         })
@@ -72,7 +72,7 @@ const StudentAcademicAnalysis = () => {
 
 
     const fetchAllStudents = async () => {
-        let res = await axios.post('http://localhost:5000/fetchstudentprofiles', {
+        let res = await axios.post('http://82.180.136.230:5000/fetchstudentprofiles', {
             token: localStorage.getItem('token')
         })
 

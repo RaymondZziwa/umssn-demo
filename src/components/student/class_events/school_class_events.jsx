@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import {Row, Col} from "react-bootstrap"
 import StudentNavbar from "../../navbars/student_navbar";
 import TeacherNavbar from "../../navbars/teacher_navbar";
-
+import loading from '../../../imgs/Loading.gif'
 import axios from "axios";
 
 const ClassEvents = () => {
@@ -14,7 +14,7 @@ const ClassEvents = () => {
     };
 
     const fetchSchoolEvents = async () => {
-        let res = await axios.post('http://localhost:5000/fetchschoolevents',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchschoolevents',{
             token: localStorage.getItem('token')
         })
 
@@ -61,7 +61,7 @@ const ClassEvents = () => {
                                     </tr>
                                 ))) :
                                 <tr>
-                                    <td>No Data Found.</td>
+                                    <p style={{textAlign:'center'}}><img src={loading} alt='loading' style={{height:'80px'}}/><br></br>Loading school events...</p>
                                 </tr>
                             }
                         </tbody>

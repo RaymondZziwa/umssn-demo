@@ -10,7 +10,7 @@ const LoginBtn = () => {
     }
     return(
         <div onClick={loginRedirectHandler} style={{cursor:'pointer'}}>
-            <img src={powerIcon} alt="log In" style={{height:'40px'}}/> <span>Log In</span> 
+            <img src={powerIcon} alt="log In" style={{height:'50px'}}/> <span>Log In</span> 
         </div>
     )
 }

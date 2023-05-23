@@ -22,7 +22,7 @@ const Login = () => {
             event.preventDefault()
             console.log('student', studentIdNumber, password)
             if(studentIdNumber.trim().length !== 0 && password.trim().length !== 0){
-                let res = await axios.post('http://localhost:5000/login',{
+                let res = await axios.post('http://82.180.136.230:5000/login',{
                     role: role,
                     studentIdNumber: studentIdNumber,
                     password: password
@@ -43,7 +43,7 @@ const Login = () => {
     const tutorLoginHandler = async (event , tutorIdNumber, tutorPassword) => {
         event.preventDefault()
         if(tutorIdNumber.trim().length !== 0 && tutorPassword.trim().length !== 0){
-            let res = await axios.post('http://localhost:5000/login',{
+            let res = await axios.post('http://82.180.136.230:5000/login',{
                 role: role,
                 tutorIdNumber: tutorIdNumber,
                 password: tutorPassword

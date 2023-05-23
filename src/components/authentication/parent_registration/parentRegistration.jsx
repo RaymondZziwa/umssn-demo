@@ -64,7 +64,7 @@ const NewParentRegistration = () => {
     }
 
     const fetchStudentClassStreams = async () => {
-        let res = await axios.post('http://localhost:5000/fetchstreamstreams', {
+        let res = await axios.post('http://82.180.136.230:5000/fetchstreamstreams', {
             selectedStudentClass: studentClass
         })
         if(res.data.responseStatus !== 404){
@@ -98,7 +98,7 @@ const NewParentRegistration = () => {
         inputFieldValidator()
         if(!validationErrorStatus){
             if(arePasswordsMatching === null){
-                let res = await axios.post('http://localhost:5000/register',{
+                let res = await axios.post('http://82.180.136.230:5000/register',{
                     studentIdNumber: studentIdNumber,
                     studentFirstName: studentFirstName,
                     studentMiddleName: studentMiddleName,

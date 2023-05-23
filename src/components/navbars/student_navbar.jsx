@@ -1,7 +1,7 @@
 import logo from '../../imgs/badge.png'
 import Logout from '../authentication/logout'
 import LoginBtn from '../authentication/login_btn'
-
+import alertImg from '../../imgs/attention.png'
 const StudentNavbar = ({activeTab, onTabChange}) => {
     return(
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -12,24 +12,28 @@ const StudentNavbar = ({activeTab, onTabChange}) => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-                <li className="nav-item">
-                <a  onClick={()=>onTabChange('dashboard')} className={activeTab === 'dashboard' ? 'nav-link active' : 'nav-link'} aria-current="page" href="/studentdashboard">Dashboard</a>
-                </li>
-                {/* <li className="nav-item">
-                <a className="nav-link" href="#">Student Attendance Information</a>
-                </li> */}
-                <li className="nav-item">
-                <a onClick={()=>onTabChange('student academic records')} className={activeTab === 'student academic records' ? 'nav-link active' : 'nav-link'} href="/studentacademicrecords">Student Past Academic Records</a>
-                </li>
-                <li className="nav-item">
-                <a onClick={()=>onTabChange('save examination data')} className={activeTab === 'save examination data' ? 'nav-link active' : 'nav-link'}  href="/studentmarksheet">Student Recent Performance</a>
-                </li>
-                <li className="nav-item">
-                <a onClick={()=>onTabChange('school class events')} className={activeTab === 'school class events' ? 'nav-link active' : 'nav-link'} href="/schoolclassevents">School Events</a>
-                </li>
-                <li className="nav-item">
-                <a onClick={()=>onTabChange('staff contact list')} className={activeTab === 'staff contact list' ? 'nav-link active' : 'nav-link'} href="/staffcontactlist">Staff Contact List</a>
-                </li>
+                {localStorage.getItem('userLoginStatus') ? 
+                <>
+                    <li className="nav-item">
+                        <a  onClick={()=>onTabChange('dashboard')} className={activeTab === 'dashboard' ? 'nav-link active' : 'nav-link'} aria-current="page" href="/studentdashboard">Dashboard</a>
+                    </li>
+                        {/* <li className="nav-item">
+                        <a className="nav-link" href="#">Student Attendance Information</a>
+                        </li> */}
+                    <li className="nav-item">
+                        <a onClick={()=>onTabChange('student academic records')} className={activeTab === 'student academic records' ? 'nav-link active' : 'nav-link'} href="/studentacademicrecords">Student Past Academic Records</a>
+                    </li>
+                    <li className="nav-item">
+                        <a onClick={()=>onTabChange('save examination data')} className={activeTab === 'save examination data' ? 'nav-link active' : 'nav-link'}  href="/studentmarksheet">Student Recent Performance</a>
+                    </li>
+                    <li className="nav-item">
+                        <a onClick={()=>onTabChange('school class events')} className={activeTab === 'school class events' ? 'nav-link active' : 'nav-link'} href="/schoolclassevents">School Events</a>
+                    </li>
+                    <li className="nav-item">
+                        <a onClick={()=>onTabChange('staff contact list')} className={activeTab === 'staff contact list' ? 'nav-link active' : 'nav-link'} href="/staffcontactlist">Staff Contact List</a>
+                    </li>
+                </>
+                : <span style={{color:'red'}}><img src={alertImg} alt='attention' height="50px"/>Your session has expired please log in.</span> }
                 <li className="nav-item">
                     {localStorage.getItem('userLoginStatus') ? <Logout /> : <LoginBtn /> }
                 </li>

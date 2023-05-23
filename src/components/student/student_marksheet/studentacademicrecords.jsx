@@ -17,7 +17,7 @@ const StudentAcademicRecords = () => {
     };
 
     const fetchAllExamSets = async() => {
-        let res = await axios.post('http://localhost:5000/fetchallexamsets',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchallexamsets',{
             token: localStorage.getItem('token')
         })
 
@@ -34,7 +34,7 @@ const StudentAcademicRecords = () => {
 
     const fetchExamSetResultsHandler = async(event) => {
         event.preventDefault()
-        let res = await axios.post('http://localhost:5000/fetchresults', {
+        let res = await axios.post('http://82.180.136.230:5000/fetchresults', {
             studentIdNumber : localStorage.getItem('studentIdNumber'),
             selectedExamSetId : selectedExamSetRef.current.value
         })
@@ -82,7 +82,7 @@ const StudentAcademicRecords = () => {
                             </tr>
                         </thead>
                         <tbody className="table-group-divider">
-                        {(isResultsLoading || typeof fetchedResults !== "object") ? <tr><td>There is no Data From Database.</td></tr> :
+                        {(isResultsLoading || typeof fetchedResults !== "object") ? <tr><td>Select examination set to see results.</td></tr> :
                                 Object.keys(fetchedResults).map(key => (
                                     <tr key={key}> 
                                         <td>{key}</td>

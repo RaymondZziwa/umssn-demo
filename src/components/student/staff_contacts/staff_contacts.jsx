@@ -2,6 +2,7 @@ import {Row, Col} from "react-bootstrap"
 import { useEffect, useState } from "react";
 import StudentNavbar from "../../navbars/student_navbar";
 import axios from "axios";
+import loading from '../../../imgs/Loading.gif'
 
 const StaffContacts = () => {
     const [activeTab, setActiveTab] = useState('staff contact list');
@@ -13,7 +14,7 @@ const StaffContacts = () => {
     };
 
     const fetchStaffContacts = async () => {
-        let res = await axios.post('http://localhost:5000/fetchstaffdata',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchstaffdata',{
             token: localStorage.getItem('token')
         })
 
@@ -60,13 +61,13 @@ const StaffContacts = () => {
                                         <td>{contact.class}</td>
                                         <td>{contact.stream}</td>
                                         <td>{contact.subject}</td>
-                                        <td>{contact.contact1}</td>
-                                        <td>{contact.contact2}</td>
+                                        <td><a href={`tel:${contact.contact1}`}>{contact.contact1}</a></td>
+                                        <td><a href={`tel:${contact.contact2}`}>{contact.contact2}</a></td>
                                         <td>{contact.email}</td>
                                     </tr>
                                 ))) :
                                 <tr>
-                                    <td>No Data Found.</td>
+                                    <p style={{textAlign:'center'}}><img src={loading} alt='loading' style={{height:'80px'}}/><br></br>Loading staff data...</p>
                                 </tr>
                             }
                         </tbody>

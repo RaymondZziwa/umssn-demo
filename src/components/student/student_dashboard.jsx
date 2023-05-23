@@ -8,6 +8,8 @@ import axios from "axios";
 import AverageLineGraph from "./academic_graphs/averagelinegraph";
 import SubjectAssesment from "./subject_assesment/subject_assesment";
 import SubjectGraph from "./academic_graphs/subjectperformanceanalyzergraph";
+import loading from '../../imgs/Loading.gif'
+import SessionExpiredModal from '../session_management/session_expired'
 const StudentDashboard = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
 
@@ -21,6 +23,13 @@ const StudentDashboard = () => {
 
     const [recentAcademicData, setRecentAcademicData] = useState([])
 
+    const [isSessionExpiredModalOpen, setIsSessionExpiredModalOpen] = useState(false)
+
+    const handleCloseModal = () => {
+      setIsSessionExpiredModalOpen(false);
+      // Additional logic after the modal is closed, if needed
+    };
+
     const handleTabChange = (tab) => {
         setActiveTab(tab);
     };
@@ -28,7 +37,7 @@ const StudentDashboard = () => {
 
 
     const fetchStudentAcademicData =  async() => {
-        let res = await axios.post('http://localhost:5000/fetchstudentacademicdata',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchstudentacademicdata',{
             token: localStorage.getItem('token'),
             studentIdNumber: localStorage.getItem('studentIdNumber')
         })
@@ -49,7 +58,7 @@ const StudentDashboard = () => {
     },[])
 
     const fetchStudentProfileData = async () => {
-        let res = await axios.post('http://localhost:5000/fetchstudentprofile',{
+        let res = await axios.post('http://82.180.136.230:5000/fetchstudentprofile',{
             token: localStorage.getItem('token'),
             studentIdNumber: localStorage.getItem('studentIdNumber')
         })
@@ -84,7 +93,8 @@ const StudentDashboard = () => {
                                 Student Class & Stream: <span style={{textAlign:'center'}}>{profile.studentclass} {profile.studentstream}</span><br></br>
                             </div>
                         ))) : 
-                        <p className="alert alert-danger">Your session token is expired. Please log in again.</p>
+                        <p style={{textAlign:'center'}}><img src={loading} alt='loading' style={{height:'80px'}}/><br></br>Loading student data...</p>
+                        // <p className="alert alert-danger">Your session token is expired. Please log in again.</p>
                     }<br></br>
 
                     <SubjectAssesment assessmentData={recentAcademicData}/>
@@ -100,9 +110,6 @@ const StudentDashboard = () => {
                           Current Position In Stream : <span style={{textAlign:'center'}}>{recentAcademicData.pos_s}</span>
                         </div>      
                     }
-
-
-
                     <SubjectGraph assessmentData={studentAcademicData}/>
                 </Col>
             </Row>

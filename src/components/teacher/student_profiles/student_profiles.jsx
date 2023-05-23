@@ -14,7 +14,7 @@ const StudentProfiles = () => {
     };
 
     const fetchStudentProfiles = async() => {
-        let res = await axios.post('http://localhost:5000/fetchstudentprofiles', {
+        let res = await axios.post('http://82.180.136.230:5000/fetchstudentprofiles', {
             token: localStorage.getItem('token')
         })
 
